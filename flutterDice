@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:namer_app/first_class.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.blue,
+        body: FirstClass(), // Use FirstClass as the body
+      ),
+    ),
+  );
+}
+import 'package:flutter/material.dart';
+import 'package:namer_app/dice_roller.dart';
+
+class FirstClass extends StatelessWidget {
+  FirstClass({super.key}); // Constructor
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: DiceRoller(), // Return the DiceRoller widget
+    );
+  }
+}
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+class DiceRoller extends StatefulWidget {
+  @override
+  State<DiceRoller> createState() {
+    return _DiceRoller();
+  }
+}
+
+class _DiceRoller extends State<DiceRoller> {
+  var imageAsset = 'assets/dice_1.png'; // Move imageAsset here
+  final Random random = Random();
+
+  void rollDice() {
+    // Generate a random number between 1 and 6
+    int diceNumber = random.nextInt(6) + 1;
+    setState(() {
+      imageAsset = 'assets/dice_$diceNumber.png'; // Update the image asset
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center, // Center the column
+      children: [
+        Image.asset(imageAsset, width: 160),
+        TextButton(
+          onPressed: rollDice, // Call rollDice when pressed
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.redAccent,
+            textStyle: TextStyle(fontSize: 28),
+          ),
+          child: Text("Roll Dice"),
+        ),
+      ],
+    );
+  }
+}
