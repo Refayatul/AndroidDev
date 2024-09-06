@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+    title: 'My first App',
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text('Mew',style: TextStyle(fontSize: 30),),
+        centerTitle: true,
+        backgroundColor: Colors.pinkAccent,
+      ),
+      body:
+      //Image.asset("assets/1.png"),
+      Image.network('https://w.wallhaven.cc/full/96/wallhaven-96jzz8.jpg',fit: BoxFit.fill,),
+
+
+      floatingActionButton: FloatingActionButton(onPressed: () => {
+        print('You click Me'),
+        Text('Click'),
+
+
+      }),
+    ),
+  )
+  );
+}
